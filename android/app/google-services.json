@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "271076827285",
+    "project_id": "flix-id-ec6e8",
+    "storage_bucket": "flix-id-ec6e8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271076827285:android:a51447614bb33cce43fb9c",
+        "android_client_info": {
+          "package_name": "com.example.flix_id"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3792-DNjWJEFQxOPSsxcH5v_-07DwhGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
