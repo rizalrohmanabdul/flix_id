@@ -12,8 +12,8 @@ class DummyAuthentication implements Authentication {
   @override
   Future<Result<String>> login({required String email, required String password}) async {
     await Future.delayed(const Duration(seconds: 1));
-    return const Result.failed('login Gagal Username atau password salah');
-    // const Result.success('ID-12345');
+    // return const Result.failed('login Gagal Username atau password salah');
+    return Result.success('ID-12345');
   }
 
   @override
