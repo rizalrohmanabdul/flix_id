@@ -124,12 +124,12 @@ class FirebaseUserRepository implements UserRepository {
       String downloadUrl = await reference.getDownloadURL();
       var updateResult = await updateUser(user: user.copyWith(photoUrl: downloadUrl));
       if(updateResult.isSuccess){
-        Result.success(updateResult.resultValue);
+        return Result.success(updateResult.resultValue!);
       } else {
         return Result.failed(updateResult.errorMessage!);
       }
     } catch (e) {
-      return Result.failed('Failed to upload profile picture');
+      return const Result.failed('Failed to upload profile picture');
     }
   }
 
