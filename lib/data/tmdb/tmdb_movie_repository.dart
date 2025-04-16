@@ -77,7 +77,7 @@ enum _MovieCategory {
 
   final String _inString;
 
-  const _MovieCategory({String inString}) : _inString = inString;
+  const _MovieCategory(String inString) : _inString = inString;
 
   @override
   String toString() => _inString;
