@@ -9,6 +9,6 @@ class Actor with _$Actor {
     String? profilePath,
   }) = _Actor;
 
-  factory Actor.fromJson(Map<String, dynamic> json) =>
+  factory Actor.fromJSON(Map<String, dynamic> json) =>
   Actor(name: json['name'], profilePath: json['profile_path']);
 }

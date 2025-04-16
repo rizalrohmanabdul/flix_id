@@ -33,7 +33,7 @@ class FirebaseTransactionRepository implements TransactionRepository {
 
 
         } else {
-          return Result.failed('insufficient balance')
+          return Result.failed('insufficient balance');
         }
       } else {
         return Result.failed('Failed to create transactions data');

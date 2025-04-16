@@ -12,7 +12,7 @@ class Transaction with _$Transaction {
     int? transactionTime,
     String? transactionImage,
     required String title,
-    @Default({}) List<String> seats,
+    @Default([]) List<String> seats,
     String? theaterName,
     int? watchingTime,
     int? ticketAmount,

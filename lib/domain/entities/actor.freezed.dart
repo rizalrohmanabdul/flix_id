@@ -14,16 +14,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Actor _$ActorFromJson(Map<String, dynamic> json) {
-  return _Actor.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Actor {
   String get name => throw _privateConstructorUsedError;
   String? get profilePath => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ActorCopyWith<Actor> get copyWith => throw _privateConstructorUsedError;
 }
@@ -103,12 +98,9 @@ class __$$ActorImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$ActorImpl implements _Actor {
   const _$ActorImpl({required this.name, this.profilePath});
-
-  factory _$ActorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ActorImplFromJson(json);
 
   @override
   final String name;
@@ -130,7 +122,6 @@ class _$ActorImpl implements _Actor {
                 other.profilePath == profilePath));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, profilePath);
 
@@ -139,20 +130,11 @@ class _$ActorImpl implements _Actor {
   @pragma('vm:prefer-inline')
   _$$ActorImplCopyWith<_$ActorImpl> get copyWith =>
       __$$ActorImplCopyWithImpl<_$ActorImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ActorImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Actor implements Actor {
   const factory _Actor(
       {required final String name, final String? profilePath}) = _$ActorImpl;
-
-  factory _Actor.fromJson(Map<String, dynamic> json) = _$ActorImpl.fromJson;
 
   @override
   String get name;

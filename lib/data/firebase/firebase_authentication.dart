@@ -26,7 +26,7 @@ class FirebaseAuthentication implements Authentication{
     if(_firebaseAuth.currentUser == null){
       return Result.success(null);
     } else {
-      return Result.failed('Logout Failed')
+      return Result.failed('Logout Failed');
     }
   }
 
