@@ -1,6 +1,9 @@
 import 'package:flix_id/presentation/extensions/build_context_extension.dart';
+import 'package:flix_id/presentation/misc/method.dart';
 import 'package:flix_id/presentation/providers/router/router_provider.dart';
 import 'package:flix_id/presentation/providers/user_data/user_data_provider.dart';
+import 'package:flix_id/presentation/widgets/bottom_nav_bar.dart';
+import 'package:flix_id/presentation/widgets/bottom_nav_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,22 +27,40 @@ class _MainPageState extends ConsumerState<MainPage> {
     },);
     return Scaffold(
       appBar: AppBar(title: const Text('Main Page'),),
-      body: Center(
-        child: Column(
-          children: [
-            Text(ref.watch(userDataProvider).when(
-              data: (data) => data.toString(),
-              error: (error, stackTrace) => '',
-              loading: () => 'loading',
-            )),
-            ElevatedButton(
-              onPressed: () {
-                ref.read(userDataProvider.notifier).logout();
-              },
-              child: const Text('Logout'
-            )),
-          ],
-        ),
+      body: Stack(
+        children: [
+          Center(
+            child: Column(
+              children: [
+                Text(ref.watch(userDataProvider).when(
+                  data: (data) => data.toString(),
+                  error: (error, stackTrace) => '',
+                  loading: () => 'loading',
+                )),
+                ElevatedButton(
+                  onPressed: () {
+                    ref.read(userDataProvider.notifier).logout();
+                  },
+                  child: const Text('Logout'
+                )),
+                verticalSpace(20),
+              ],
+            ),
+          ),
+          BottomNavBar(
+            items: const [
+              BottomNavBarItem(
+                  index: 0,
+                  isSelected: true,
+                  title: 'Home',
+                  image: 'assets/movie.png',
+                  selectedImage: 'assets/movie-selected.png'
+                )
+            ],
+            onTap: (index){},
+            selectedIndex: 0
+          )
+        ],
       ),
     );
   }
