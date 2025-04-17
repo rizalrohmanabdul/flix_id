@@ -1,11 +1,15 @@
 import 'package:flix_id/presentation/extensions/build_context_extension.dart';
+import 'package:flix_id/presentation/misc/method.dart';
 import 'package:flix_id/presentation/providers/router/router_provider.dart';
 import 'package:flix_id/presentation/providers/user_data/user_data_provider.dart';
+import 'package:flix_id/presentation/widgets/flix_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginPage extends ConsumerWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  LoginPage({Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,26 +24,69 @@ class LoginPage extends ConsumerWidget {
     },);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Login'),),
-      body: Center(
-        child: ElevatedButton(onPressed: (){
-          ref
-            .read(userDataProvider.notifier)
-            .login(email: 'rizal@rizal.com', password: '123456');
-          // Login login = ref.watch(loginProvider);
-
-          // login(LoginParams(email: 'rizal@rizal.com', password: '123456')).then((result) {
-          //   if (result.isSuccess) {
-          //     Navigator.of(context).push(MaterialPageRoute(
-          //       builder: (context) => MainPage(user: result.resultValue!)
-          //     ));
-          //   } else {
-          //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          //       content: Text(result.errorMessage!)
-          //     ));
-          //   }
-          // });
-        }, child: const Text('Login'),),
+      body: ListView(
+        children: [
+          verticalSpace(100),
+          Center(
+            child: Image.asset(
+              'assets/flix_logo.png',
+              width: 150,
+              ),
+          ),
+          verticalSpace(100),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              children: [
+                FlixTextField(
+                  labelText: 'Email',
+                  controller: emailController,
+                ),
+                verticalSpace(24),
+                FlixTextField(
+                  labelText: 'Password',
+                  controller: passwordController,
+                  obscureText: true,
+                ),
+                Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Forgot password?',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    )),
+                verticalSpace(24),
+                switch(ref.watch(userDataProvider)){
+                  AsyncData(:final value) => value == null ?
+                  SizedBox(width: double.infinity,
+                    child: ElevatedButton(onPressed: (){
+                      ref
+                        .read(userDataProvider.notifier)
+                        .login(email: emailController.text, password: passwordController.text);
+                    }, child: const Text('Login', style: TextStyle(fontWeight: FontWeight.bold),),),
+                  ) : const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    _ => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                },
+                verticalSpace(24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't Have an Account? "),
+                    TextButton(
+                      onPressed: (){}, 
+                      child: const Text('Register Here', style: TextStyle(fontWeight: FontWeight.bold),), )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

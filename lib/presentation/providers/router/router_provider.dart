@@ -1,7 +1,6 @@
 import 'package:flix_id/presentation/pages/login_page/login_page.dart';
 import 'package:flix_id/presentation/pages/main_page/main_page.dart';
 import 'package:go_router/go_router.dart';
-import 'package:path/path.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router_provider.g.dart';
@@ -17,6 +16,6 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
   GoRoute(
     path: '/login',
     name: 'login',
-    builder: (context, state) => const LoginPage(),
+    builder: (context, state) => LoginPage(),
   )
 ], initialLocation: '/login', debugLogDiagnostics: false);
